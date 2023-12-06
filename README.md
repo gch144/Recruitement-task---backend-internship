@@ -108,6 +108,8 @@ python script.py print-all-accounts --login "joshua75@example.org" --password "&
 python script.py print-oldest-account --login "joshua75@example.org"  --password "&T)u+DAa31"
 
 python script.py group-by-age --login "joshua75@example.org"  --password "&T)u+DAa31"
+
+python script.py print-children --login "ngutierrez@example.net" --password "@9TcRo15As"
 ```
 
 ## Additional Notes
