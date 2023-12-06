@@ -16,7 +16,7 @@ pip install python3.10
 Run the script with the desired command. Below is an example of usage:
 
 ```bash
-python script.py <command> --login <login> --password <password>
+python script.py <command> --login "<login>" --password "<password>"
 ```
 
 Replace `script.py` with the actual script filename.
@@ -30,7 +30,7 @@ Replace `script.py` with the actual script filename.
 Prints the total number of valid accounts.
 
 ```bash
-python script.py print-all-accounts --login <login> --password <password>
+python script.py print-all-accounts --login "<login>" --password "<password>"
 ```
 
 ### 2. `print-oldest-account`
@@ -38,7 +38,7 @@ python script.py print-all-accounts --login <login> --password <password>
 Prints information about the account with the longest existence.
 
 ```bash
-python script.py print-oldest-account --login <login> --password <password>
+python script.py print-oldest-account --login "<login>" --password "<password>"
 ```
 
 ### 3. `group-by-age`
@@ -46,7 +46,7 @@ python script.py print-oldest-account --login <login> --password <password>
 Groups children by age and displays relevant information.
 
 ```bash
-python script.py group-by-age --login <login> --password <password>
+python script.py group-by-age --login "<login>" --password "<password>"
 ```
 
 ### 4. `print-children`
@@ -54,7 +54,7 @@ python script.py group-by-age --login <login> --password <password>
 Displays information about the user's children. Sorts children alphabetically by name.
 
 ```bash
-python script.py print-children --login <login> --password <password>
+python script.py print-children --login "<login>" --password "<password>"
 ```
 
 ### 5. `find-similar-children-by-age`
@@ -62,7 +62,7 @@ python script.py print-children --login <login> --password <password>
 Finds users with children of the same age as at least one of their own children.
 
 ```bash
-python script.py find-similar-children-by-age --login <login> --password <password>
+python script.py find-similar-children-by-age --login "<login>" --password "<password>"
 ```
 
 <!-- ## Creating SQLite Database
@@ -75,13 +75,21 @@ python script.py create_database --login <login> --password <password>
 
 This command creates the database file `user_data.db` and populates it with user data. -->
 
-**Note:** Replace `<login>` and `<password>` with your actual login credentials.
+**Note:** Replace `<login>` and `<password>` with your actual login credentials , and remember to use `" "`.
 **Note:** There are two file one is `functions.py` ans `script.py` and remember that `data_folder` give proper name of main folder.
 
 ## Example Usage
 
 ```bash
-python script.py print-all-accounts --login <login> --password <password>
+python script.py print-all-accounts --login "<login>" --password "<password>"
+
+python script.py find-similar-children-by-age --login "victoriataylor@example.net" --password "+Wu@Pu)y(0"
+
+python script.py print-all-accounts --login "joshua75@example.org" --password "&T)u+DAa31"
+
+python script.py print-oldest-account --login "joshua75@example.org"  --password "&T)u+DAa31"
+
+python script.py group-by-age --login "joshua75@example.org"  --password "&T)u+DAa31"
 ```
 
 ## Additional Notes

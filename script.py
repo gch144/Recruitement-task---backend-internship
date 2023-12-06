@@ -1,5 +1,4 @@
 import argparse
-
 from functions import (
     import_data_recursive,
     remove_duplicates,
@@ -10,14 +9,14 @@ from functions import (
 class UserScript:
     ADMIN_ROLES = {"admin"}
 
-    def __init__(self, dataset):  # Add login as an attribute with a default value
+    def __init__(self, dataset):
         self.dataset = dataset
         self.user = None
 
     def validate_login(self, login, password):
         user = self.find_user_by_login(login)
         print(f"Provided login: {login}, Provided password: {password}")
-        print(f"Found user: {user}")
+        # print(f"Found user: {user}")
         if user and user["password"] == password:
             self.user = user
             self.login = login
@@ -57,7 +56,6 @@ class UserScript:
                         children_by_age[age]["count"] += 1
                         children_by_age[age]["names"].add(child["name"])
 
-            # Sort age groups by count and print results
             sorted_by_age = sorted(children_by_age.items(), key=lambda x: x[1]["count"])
             for age, children_info in sorted_by_age:
                 children_str = ", ".join(children_info["names"])
@@ -123,8 +121,6 @@ class UserScript:
         else:
             print(f"Invalid command: {command_name}")
 
-
-# pip install db-sqlite3
 
 if __name__ == "__main__":
     # Example usage
