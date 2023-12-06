@@ -13,7 +13,7 @@ UserScript is a command-line utility for managing user accounts. It provides var
 
 It is recommended to use `pipenv` to manage project dependencies. Follow these steps:
 
-1. Install Python 3.10 from the [official Python website](https://www.python.org/downloads/release).
+1. Install Python 3.10 .
 
 2. Open a terminal and navigate to your project folder.
 
