@@ -2,9 +2,28 @@
 
 UserScript is a command-line utility for managing user accounts. It provides various commands to perform operations on user data, including printing account details, finding similar children by age, and more.
 
-## Installation
+# Installation
 
-Make sure you have Python installed. Additionally, install the required dependencies using the following command:
+## Prerequisites
+
+- Python 3.10
+- pipenv (Python package manager) (not Compulsory)
+
+## Setting up the Environment
+
+It is recommended to use `pipenv` to manage project dependencies. Follow these steps:
+
+1. Install Python 3.10 from the [official Python website](https://www.python.org/downloads/release).
+
+2. Open a terminal and navigate to your project folder.
+
+3. Create a virtual environment with `pipenv`:
+
+   ```bash
+   pipenv install --python 3.10
+   pipenv shell
+
+   ```
 
 ```bash
 pip install python3.10
@@ -22,8 +41,6 @@ python script.py <command> --login "<login>" --password "<password>"
 Replace `script.py` with the actual script filename.
 
 ## Available Commands
-
-###
 
 ### 1. `print-all-accounts`
 
