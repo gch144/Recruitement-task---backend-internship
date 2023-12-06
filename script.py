@@ -80,9 +80,7 @@ class UserScript:
                         )
 
                 connection.commit()
-                print("Database created.")
-        else:
-            print("Access denied. Admin role required.")
+                print("Database created with name of 'my_database.db'")
 
     def validate_login(self, login, password):
         user = self.find_user_by_login(login)
