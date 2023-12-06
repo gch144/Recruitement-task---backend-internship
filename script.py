@@ -1,4 +1,5 @@
 import argparse
+import sqlite3
 from functions import (
     import_data_recursive,
     remove_duplicates,
@@ -9,9 +10,79 @@ from functions import (
 class UserScript:
     ADMIN_ROLES = {"admin"}
 
-    def __init__(self, dataset):
+    def __init__(self, dataset, database_path=":memory:"):
         self.dataset = dataset
         self.user = None
+        self.database_path = database_path
+        self.create_database()
+
+    def create_database(self):
+        if self.has_admin_access():
+            with sqlite3.connect(self.database_path) as connection:
+                cursor = connection.cursor()
+                cursor.execute(
+                    """
+                    CREATE TABLE IF NOT EXISTS users (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        firstname TEXT,
+                        telephone_number TEXT,
+                        email TEXT,
+                        password TEXT,
+                        role TEXT,
+                        created_at TEXT
+                    )
+                """
+                )
+
+                cursor.execute(
+                    """
+                    CREATE TABLE IF NOT EXISTS children (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        user_id INTEGER,
+                        name TEXT,
+                        age INTEGER,
+                        FOREIGN KEY (user_id) REFERENCES users (id)
+                    )
+                """
+                )
+
+                for user in self.dataset:
+                    cursor.execute(
+                        """
+                        INSERT INTO users (
+                            firstname,
+                            telephone_number,
+                            email,
+                            password,
+                            role,
+                            created_at
+                        ) VALUES (?, ?, ?, ?, ?, ?)
+                    """,
+                        (
+                            user.get("firstname"),
+                            user.get("telephone_number"),
+                            user.get("email"),
+                            user.get("password"),
+                            user.get("role"),
+                            user.get("created_at").strftime("%Y-%m-%d %H:%M:%S"),
+                        ),
+                    )
+
+                    user_id = cursor.lastrowid
+
+                    for child in user.get("children", []):
+                        cursor.execute(
+                            """
+                            INSERT INTO children (user_id, name, age)
+                            VALUES (?, ?, ?)
+                        """,
+                            (user_id, child.get("name"), child.get("age")),
+                        )
+
+                connection.commit()
+                print("Database created.")
+        else:
+            print("Access denied. Admin role required.")
 
     def validate_login(self, login, password):
         user = self.find_user_by_login(login)
@@ -118,14 +189,16 @@ class UserScript:
             self.print_children()
         elif command_name == "find-similar-children-by-age":
             self.find_similar_children_by_age()
+        elif command_name == "create-database":
+            self.create_database()
         else:
             print(f"Invalid command: {command_name}")
 
 
 if __name__ == "__main__":
-    # Example usage
     data_folder = "data"
     output_json_file = "Result.json"
+    database_path = "my_database.db"
 
     merged_dataset = []
 
@@ -135,7 +208,7 @@ if __name__ == "__main__":
 
     write_to_json(merged_dataset, output_json_file)
 
-    user_script = UserScript(merged_dataset)
+    user_script = UserScript(merged_dataset, database_path)
 
     parser = argparse.ArgumentParser(description="User Script")
     parser.add_argument(

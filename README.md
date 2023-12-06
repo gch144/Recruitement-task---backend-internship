@@ -7,6 +7,7 @@ UserScript is a command-line utility for managing user accounts. It provides var
 ## Prerequisites
 
 - Python 3.10
+- db-sqlite3
 - pipenv (Python package manager) (not Compulsory)
 
 ## Setting up the Environment
@@ -27,7 +28,7 @@ It is recommended to use `pipenv` to manage project dependencies. Follow these s
 
 ```bash
 pip install python3.10
-# pip install db-sqlite3
+pip install db-sqlite3
 ```
 
 ## Usage
@@ -82,15 +83,40 @@ Finds users with children of the same age as at least one of their own children.
 python script.py find-similar-children-by-age --login "<login>" --password "<password>"
 ```
 
-<!-- ## Creating SQLite Database
+## Creating SQLite Database
+
+**Note:** But only `admin` have access to Store Data in SQLite in data base.
+**IMP:** Delete `my_database.db` every time when you want to run command again . otherwise it insert data in same database or change name of database.
+
+### Database Information
+
+#### Tables
+
+1. **users:**
+
+   - Columns:
+     - user_id (INTEGER): Unique identifier for each user.
+     - firstname (TEXT): First name of the user.
+     - email (TEXT): Email address of the user.
+     - telephone_number (TEXT): Telephone number of the user.
+     - password (TEXT): Password for user authentication.
+     - role (TEXT): User role, e.g., "admin" or "user."
+     - created_at (TEXT): Timestamp indicating when the user account was created.
+
+2. **children:**
+   - Columns:
+     - child_id (INTEGER): Unique identifier for each child.
+     - user_id (INTEGER): Foreign key referencing the user to whom the child belongs.
+     - name (TEXT): Name of the child.
+     - age (INTEGER): Age of the child.
 
 To create an SQLite database and use it for the rest of the tasks, use the following command:
 
 ```bash
-python script.py create_database --login <login> --password <password>
+python script.py create-database --login "<login>" --password "<password>"
 ```
 
-This command creates the database file `user_data.db` and populates it with user data. -->
+This command creates the database file `user_data.db` and populates it with user data.
 
 **Note:** Replace `<login>` and `<password>` with your actual login credentials , and remember to use `" "`.
 
@@ -116,6 +142,28 @@ python script.py print-children --login "ngutierrez@example.net" --password "@9T
 
 - Make sure to replace `<login>` and `<password>` with your actual login credentials.
 - Some commands may require admin access. Ensure that your account has the necessary permissions.
+
+## Database Information
+
+### Tables
+
+1. **users:**
+
+   - Columns:
+     - user_id (INTEGER): Unique identifier for each user.
+     - firstname (TEXT): First name of the user.
+     - email (TEXT): Email address of the user.
+     - telephone_number (TEXT): Telephone number of the user.
+     - password (TEXT): Password for user authentication.
+     - role (TEXT): User role, e.g., "admin" or "user."
+     - created_at (TEXT): Timestamp indicating when the user account was created.
+
+2. **children:**
+   - Columns:
+     - child_id (INTEGER): Unique identifier for each child.
+     - user_id (INTEGER): Foreign key referencing the user to whom the child belongs.
+     - name (TEXT): Name of the child.
+     - age (INTEGER): Age of the child.
 
 **Extra:** Even you can check `Result.json` for all the valid user maually also.
 
