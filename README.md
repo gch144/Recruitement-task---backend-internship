@@ -86,6 +86,7 @@ python script.py find-similar-children-by-age --login "<login>" --password "<pas
 ## Creating SQLite Database
 
 **Note:** But only `admin` have access to Store Data in SQLite in data base.
+
 **IMP:** Delete `my_database.db` every time when you want to run command again . otherwise it insert data in same database or change name of database.
 
 ### Database Information
