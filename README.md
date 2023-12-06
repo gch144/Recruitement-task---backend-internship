@@ -115,6 +115,6 @@ python script.py group-by-age --login "joshua75@example.org"  --password "&T)u+D
 - Make sure to replace `<login>` and `<password>` with your actual login credentials.
 - Some commands may require admin access. Ensure that your account has the necessary permissions.
 
-**Extra:**Even you can check `Result.json` for all the valid user maually also.
+**Extra:** Even you can check `Result.json` for all the valid user maually also.
 
 Feel free to explore other commands and tailor them to your specific use case.
