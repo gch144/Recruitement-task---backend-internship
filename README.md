@@ -93,6 +93,7 @@ python script.py create_database --login <login> --password <password>
 This command creates the database file `user_data.db` and populates it with user data. -->
 
 **Note:** Replace `<login>` and `<password>` with your actual login credentials , and remember to use `" "`.
+
 **Note:** There are two file one is `functions.py` ans `script.py` and remember that `data_folder` give proper name of main folder.
 
 ## Example Usage
@@ -114,5 +115,6 @@ python script.py group-by-age --login "joshua75@example.org"  --password "&T)u+D
 - Make sure to replace `<login>` and `<password>` with your actual login credentials.
 - Some commands may require admin access. Ensure that your account has the necessary permissions.
 
-Even you can check `Result.json` for all the valid user maually also.
+**Extra:**Even you can check `Result.json` for all the valid user maually also.
+
 Feel free to explore other commands and tailor them to your specific use case.
