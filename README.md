@@ -144,27 +144,7 @@ python script.py print-children --login "ngutierrez@example.net" --password "@9T
 - Make sure to replace `<login>` and `<password>` with your actual login credentials.
 - Some commands may require admin access. Ensure that your account has the necessary permissions.
 
-## Database Information
 
-### Tables
-
-1. **users:**
-
-   - Columns:
-     - user_id (INTEGER): Unique identifier for each user.
-     - firstname (TEXT): First name of the user.
-     - email (TEXT): Email address of the user.
-     - telephone_number (TEXT): Telephone number of the user.
-     - password (TEXT): Password for user authentication.
-     - role (TEXT): User role, e.g., "admin" or "user."
-     - created_at (TEXT): Timestamp indicating when the user account was created.
-
-2. **children:**
-   - Columns:
-     - child_id (INTEGER): Unique identifier for each child.
-     - user_id (INTEGER): Foreign key referencing the user to whom the child belongs.
-     - name (TEXT): Name of the child.
-     - age (INTEGER): Age of the child.
 
 **Extra:** Even you can check `Result.json` for all the valid user maually also.
 
